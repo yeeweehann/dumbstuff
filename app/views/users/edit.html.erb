@@ -1,0 +1,19 @@
+<%= form_for @user do |f| %>
+    
+    <h1>Edit</h1>
+
+    <%= f.label :email %>
+    <%= f.text_field :email, placeholder: "Email" %>  
+
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "Password" %> 
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+
+    <%= f.label :avatar %>
+  	<%= f.file_field :avatar %>
+
+ 	<%= f.submit :"Update" %> 
+
+<% end %>  

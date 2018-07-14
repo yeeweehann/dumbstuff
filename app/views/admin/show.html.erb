@@ -1,0 +1,11 @@
+<h2>Users' List</h2>
+
+<% @users.each do |u| %>
+	<%= u.id %>
+	<%= u.username %>
+	<%= u.email %>
+	<%= link_to "View Profile", user_path(u) %>
+	<%= link_to "Delete User", kill_user_path(admin_id: current_user.id, user_id: u), method: :delete, data: { confirm: "Are you sure?" } %><br>
+<% end %>
+
+<%= link_to "Admin Page", admin_index_path %>
