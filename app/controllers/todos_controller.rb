@@ -47,5 +47,6 @@ class TodosController < ApplicationController
 	def edit_todo_params
 		params.permit(:status)
 	end
+
 end
 

@@ -6,22 +6,22 @@
 			<th>Description</th>
 			<th>Status</th>
 		</tr>
-		<% current_user.todos.each_with_index do |todo,index| %>
+		<% current_user.todos.each_with_index do |t,index| %>
 			<tr>
 				<td><%= index + 1 %>.</td>
 				<td>
-				<% if todo.image.present? %>
-					<%= image_tag todo.image.url(:thumb) %>
+				<% if t.image.present? %>
+					<%= image_tag t.image.url(:thumb) %>
 				<% else %>
 					No image
 				<% end %>
 				</td>
-				<td><%= todo.description %></td>
-				<td><%= todo.status %></td>
-				<% if todo.Incomplete? %>
-				<td><%= button_to "Complete", user_todo_path(@user, todo, :status => :Complete ), :method => :put, remote: true %>
+				<td><%= t.description %></td>
+				<td><%= t.status %></td>
+				<% if t.Incomplete? %>
+				<td><%= button_to "Complete", user_todo_path(@user, t, :status => :Complete ), :method => :put, remote: true %>
 				<% end %>
-				<td><%= link_to "Delete Todo", user_todo_path(@user, todo), method: :delete, data: { confirm: "Are you sure?" }, remote: true %></td>
+				<td><%= link_to "Delete Todo", user_todo_path(@user, t), method: :delete, data: { confirm: "Are you sure?" }, remote: true %></td>
 			</tr>
 		<% end %>
 	</table>

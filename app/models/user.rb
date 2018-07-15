@@ -7,6 +7,10 @@ class User < ApplicationRecord
 	validates :password, :email, :password_confirmation, presence: true, on: [:create]
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-	enum role: [:noobie, :whaler, :admin]
+	enum role: [:Noobie, :Whaler, :Admin]
 
+	def self.search_by(search_term)
+		where("LOWER(username) LIKE :search_term OR LOWER(email) LIKE :search_term", 
+			search_term: "%#{search_term.downcase}%")
+	end
 end

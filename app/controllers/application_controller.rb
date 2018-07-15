@@ -13,10 +13,11 @@ class ApplicationController < ActionController::Base
 	helper_method :current_user
 
 	def authorize_admin
-		redirect_to users_path, alert: "GET OUT!!!" if current_user.noobie? || current_user.whaler?
+		redirect_to users_path, alert: "GET OUT!!!" if current_user.Noobie? || current_user.Whaler?
 	end
 
 	def authorized
-		redirect_to users_path, alert: "You are too poor to use this." if current_user.noobie?
+		redirect_to users_path, alert: "You are too poor to use this." if current_user.Noobie?
+	end
 
 end

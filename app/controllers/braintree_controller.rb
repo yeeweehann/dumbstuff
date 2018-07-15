@@ -15,7 +15,7 @@ class BraintreeController < ApplicationController
 	)
 
 	if result.success?
-		current_user.whaler!
+		current_user.Whaler!
 	    redirect_to users_path, :flash => { :success => "Thanks for the money!" }
 	else
 	    redirect_to :root, :flash => { :error => "Are you kidding me? Please get out if you have no money" }

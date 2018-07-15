@@ -5,4 +5,5 @@ class Todo < ApplicationRecord
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 	enum status: [:Incomplete, :Complete]
 
+	
 end

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save 
 			if @user.id == 1
-				@user.admin!
+				@user.Admin!
 				session[:user_id] = @user.id
 				redirect_to admin_index_path
 			else
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
-			if @user.admin?
+			if @user.Admin?
 				redirect_to admin_index_path
 			else
 				redirect_to user_path
