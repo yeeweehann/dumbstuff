@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   	delete "/sign_out" => "sessions#destroy", as: "sign_out"
   	post "/sessions/new" => "sessions#create" 
     delete "/admin/:admin_id/user/:user_id" => "admin#destroy", as: "kill_user"
-  	get 'braintree/new'
+  	put "/users/:user_id/todos/:id" => "todos#index"
+    get 'braintree/new'
     post 'braintree/checkout'
 
 end

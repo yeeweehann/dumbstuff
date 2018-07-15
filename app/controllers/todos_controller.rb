@@ -19,6 +19,13 @@ class TodosController < ApplicationController
 		end
 	end
 
+	def update
+		@todo = Todo.find(params[:id])
+		if @todo.update(edit_todo_params)
+			redirect_to user_todos_path
+		end
+	end
+
 	def destroy
 		@todo = Todo.find(params[:id])
 		if @todo.user_id == current_user.id
@@ -33,6 +40,10 @@ class TodosController < ApplicationController
 
 	def todo_params
 		params.require(:todo).permit(:description, :image)	
+	end
+
+	def edit_todo_params
+		params.permit(:status)
 	end
 end
 
