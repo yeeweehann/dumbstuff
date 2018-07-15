@@ -16,4 +16,7 @@ class ApplicationController < ActionController::Base
 		redirect_to users_path, alert: "GET OUT!!!" if current_user.noobie? || current_user.whaler?
 	end
 
+	def authorized
+		redirect_to users_path, alert: "You are too poor to use this." if current_user.noobie?
+
 end

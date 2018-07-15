@@ -1,5 +1,7 @@
 class TodosController < ApplicationController
 
+	before_action :authorized
+
 	def index
 		@user = User.find(params[:user_id])
 		@todo = Todo.order(:id)
