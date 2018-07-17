@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     delete "/admin/:admin_id/user/:user_id" => "admin#destroy", as: "kill_user"
   	put "/users/:user_id/todos/:id" => "todos#index"
     get 'braintree/new'
+    post 'braintree/new'
     post 'braintree/checkout'
 
 end
