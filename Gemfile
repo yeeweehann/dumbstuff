@@ -82,3 +82,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
 end
+
+# for heroku gem
+gem 'rails_12factor'
