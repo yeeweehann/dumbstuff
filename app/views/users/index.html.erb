@@ -8,7 +8,7 @@
 	<h4>Wow rich kid. Thanks for the money. As promised, here is the <%= link_to "link", user_todos_path(@user) %> to this website's function.</h4><br>
 <% elsif @user.Admin? %>
 	<h4>Welcome back master. Here to kill more users again?</h4>
-	<% link_to "Admin Page", admin_path %>
+	<%= link_to "Admin Page", admin_index_path %><br>
 <% end %>
 
 

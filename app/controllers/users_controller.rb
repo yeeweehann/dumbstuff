@@ -13,10 +13,10 @@ class UsersController < ApplicationController
 		if @user.save 
 			if @user.id == 1
 				@user.Admin!
-				session[:user_id] = @user.id
+				cookies[:auth_token] = @user.auth_token
 				redirect_to admin_index_path
 			else
-				session[:user_id] = @user.id
+				cookies[:auth_token] = @user.auth_token
 				redirect_to users_path
 			end
 		else
@@ -26,6 +26,11 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		if current_user.role != "Admin"	
+			if @user.id != current_user.id
+				redirect_to users_path
+			end
+		end
 	end
 
 	def edit

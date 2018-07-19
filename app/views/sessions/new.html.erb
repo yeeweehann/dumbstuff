@@ -4,7 +4,9 @@
 		<%= f.text_field :email, placeholder: "Email" %>
 		<%= f.password_field :password, placeholder: "Password" %>
 		<%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
-	
+		<%= label_tag :remember_me %>
+    	<%= check_box_tag :remember_me, 1, params[:remember_me] %>
+		
 		<%= f.submit "Log In" %>
 	<% end %>
 
