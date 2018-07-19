@@ -1,5 +1,6 @@
 <h1>WELCOME BACK MASTER</h1>
 
 <%= link_to "Users' List", admin_path(@admin) %><br>
+<%= link_to "Not Todo Page", user_todos_path(@admin) %><br>
 <%= link_to "View Profile", user_path(@admin) %><br>
 <%= link_to "Sign Out", sign_out_path, method: :delete %>
