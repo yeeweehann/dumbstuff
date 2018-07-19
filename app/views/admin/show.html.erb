@@ -1,0 +1,36 @@
+<h2>Users' List</h2>
+
+<%= form_for "",url: admin_path, role: "search", method: :get do %>
+	<%= text_field_tag :search, @search_term, placeholder: "Search by Username or Email" %>
+	<%= submit_tag "Search" %>
+<% end %>
+
+
+<table>
+		<tr>
+			<th>No.</th>
+			<th>Image</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Role</th>
+		</tr>
+		<% @users.each_with_index do |u,index| %>
+			<tr>
+				<td><%= index + 1 %>.</td>
+				<td>
+				<% if u.avatar.present? %>
+					<%= image_tag u.avatar.url(:thumb) %>
+				<% else %>
+					<%= image_tag "UK.jpg", style:"width:100px" %>
+				<% end %>
+				</td>
+				<td><%= u.username %></td>
+				<td><%= u.email %></td>
+				<td><%= u.role %></td>
+				<td><%= link_to "Delete User", kill_user_path(admin_id: current_user.id, user_id: u), method: :delete, data: { confirm: "Are you sure?" } %></td>
+			</tr>
+		<% end %>
+	</table>
+
+<%= link_to "Back to Admin Page", admin_index_path %><br>
+<%= link_to "Refresh Users", admin_path %>

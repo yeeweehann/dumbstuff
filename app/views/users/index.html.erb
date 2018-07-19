@@ -1,0 +1,16 @@
+<h2>Hello <%= @user.username %>
+
+<% if @user.Noobie? %>
+	<h4>Why so much effort to create an account and sign in? You don't even know what this site does don't you? This just proves that your IQ is low.</h4>
+	<h4>Fine. Since you are so persistant in finding out what this site does, please pay up. Else this is all the site has to offer.</h4>
+	<%= button_to "Show me the money", braintree_new_path %><br>
+<% elsif @user.Whaler? %>
+	<h4>Wow rich kid. Thanks for the money. As promised, here is the <%= link_to "link", user_todos_path(@user) %> to this website's function.</h4><br>
+<% elsif @user.Admin? %>
+	<h4>Welcome back master. Here to kill more users again?</h4>
+	<% link_to "Admin Page", admin_path %>
+<% end %>
+
+
+<%= link_to "View Profile", user_path(@user) %><br>
+<%= link_to "Sign Out", sign_out_path, method: :delete %>

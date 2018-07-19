@@ -1,0 +1,17 @@
+<h2>Profile Page</h2>
+
+<% if @user.avatar.present? %>
+	<%= image_tag @user.avatar.url(:thumb) %>
+<% else %>
+	<%= image_tag "UK.jpg", style:"width:100px" %>
+<% end %>
+<h4>Username: <%= @user.username %></h4>
+<h4>Email: <%= @user.email %></h4>
+
+<%= link_to "Edit Profile", edit_user_path %>
+<% if current_user.Admin? %>
+	<%= link_to "Back to Admin Page", admin_index_path %>
+	<%= link_to "Back to Users' List Page", admin_path(current_user) %>
+<% else %>
+	<%= link_to "Back", users_path %>
+<% end %>

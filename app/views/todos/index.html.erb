@@ -1,0 +1,35 @@
+<h2> The useless stuff that nobody cares that I don't even know why I even make this for app!!!</h2>
+
+<% if @todo.count != 0 %>
+	<table>
+		<tr>
+			<th>No.</th>
+			<th>Image</th>
+			<th>Description</th>
+			<th>Status</th>
+		</tr>
+		<% current_user.todos.each_with_index do |t,index| %>
+			<tr>
+				<td><%= index + 1 %>.</td>
+				<td>
+				<% if t.image.present? %>
+					<%= image_tag t.image.url(:thumb) %>
+				<% else %>
+					No image
+				<% end %>
+				</td>
+				<td><%= t.description %></td>
+				<td><%= t.status %></td>
+				<% if t.Incomplete? %>
+				<td><%= button_to "Complete", user_todo_path(@user, t, :status => :Complete ), :method => :put, remote: true %>
+				<% end %>
+				<td><%= link_to "Delete Todo", user_todo_path(@user, t), method: :delete, data: { confirm: "Are you sure?" }, remote: true %></td>
+			</tr>
+		<% end %>
+	</table>
+<% else %>
+	You have no Todos for now.
+<% end %>
+
+<%= link_to "New Todo", new_user_todo_path %>
+<%= link_to "Sign Out", sign_out_path, method: :delete %>

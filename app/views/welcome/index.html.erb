@@ -1,0 +1,13 @@
+<h1>Welcome to DumbStuff!!</h1>
+
+<h4>By just viewing this page your IQ will drop by 100</h4><br>
+<h4>And if you view the codes that forms this webapp, you will probably die of cancer</h4>
+
+
+<% if current_user %>
+	<%= link_to "Sign Out", sign_out_path, method: :delete %>
+	<%= link_to "User Page", users_path %>
+<% else %>
+	<%= link_to "Sign In", sign_in_path %>
+	<%= link_to "Sign Up", sign_up_path %>
+<% end %>
