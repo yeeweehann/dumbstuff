@@ -1,6 +1,6 @@
 <h2> The useless stuff that nobody cares that I don't even know why I even make this for app!!!</h2>
 
-<% if @todo.count != 0 %>
+<% if @user.todos.count != 0 %>
 	<table>
 		<tr>
 			<th>No.</th>
@@ -21,7 +21,7 @@
 				<td><%= t.description %></td>
 				<td><%= t.status %></td>
 				<% if t.Incomplete? %>
-				<td><%= button_to "Complete", user_todo_path(@user, t, :status => :Complete ), :method => :put, remote: true %>
+				<td><%= button_to "Complete", user_todo_path(@user, t, :status => :Complete ), :method => :put, remote: true,  data: { confirm: "I'm pretty sure you havent done it yet. But whatever, who's looking?" } %>
 				<% end %>
 				<td><%= link_to "Delete Todo", user_todo_path(@user, t), method: :delete, data: { confirm: "Are you sure?" }, remote: true %></td>
 			</tr>
@@ -31,5 +31,10 @@
 	You have no Todos for now.
 <% end %>
 
-<%= link_to "New Todo", new_user_todo_path %>
+<%= link_to "New Todo", new_user_todo_path %><br>
+<% if @user.Admin? %>
+	<%= link_to "Admin Page", admin_index_path %><br>
+<% else %>
+	<%= link_to "User Page", users_path %><br>
+<% end %>
 <%= link_to "Sign Out", sign_out_path, method: :delete %>

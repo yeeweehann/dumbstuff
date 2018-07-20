@@ -13,7 +13,7 @@ describe "ensure sign in, sign out, and reach todo page is working", driver: :se
 		fill_in('Password Confirmation', with: '123')
 		click_button('Log In')
 		click_button('Show me the money')
-		sleep 4
+		sleep 5
       	within_frame('braintree-hosted-field-number') do
      		fill_in 'credit-card-number', with: '4111-1111-1111-1111'
    		 end
@@ -27,17 +27,17 @@ describe "ensure sign in, sign out, and reach todo page is working", driver: :se
 	    end
 		click_button('Purchase')
 		sleep 4
-		
 	end
 
 	it "create todo, complete todo, delete todo and sign out" do
-		user = User.last
 		click_link('link')
 		click_link('New Todo')
 		fill_in('Description', with: 'Punch Myself')
-		click_button("Add Todo")
+		click_button("Add Not Todo")
 		click_button("Complete")
+		page.driver.browser.switch_to.alert.accept
 		click_link("Delete Todo")
+		page.driver.browser.switch_to.alert.accept
 		click_link("Sign Out")
 		expect(root_path)
 	end

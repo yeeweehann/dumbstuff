@@ -3,17 +3,19 @@
     <h1>Edit</h1>
 
     <%= f.label :email %>
-    <%= f.text_field :email, placeholder: "Email" %>  
+    <%= f.text_field :email, placeholder: "Email" %><br>  
 
-    <%= f.label :password %>
-    <%= f.password_field :password, placeholder: "Password" %> 
+    <%= f.label :new_password %>
+    <%= f.password_field :password, placeholder: "Password" %><br> 
 
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+    <%= f.label :new_password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %><br>
 
     <%= f.label :avatar %>
-  	<%= f.file_field :avatar %>
+  	<%= f.file_field :avatar %><br>
 
- 	<%= f.submit :"Update" %> 
+ 	<%= f.submit :"Update" %>
 
 <% end %>  
+
+<%= link_to "Back", user_path(current_user) %>
